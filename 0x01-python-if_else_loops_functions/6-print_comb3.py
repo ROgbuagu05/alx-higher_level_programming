@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-num = 0
-while num <= 89:
-    if num % 10 == 0 and num != 0:
-        num += 1 + num // 10
-    print("{:02d}".format(num), end=', ' if num != 89 else '\n')
-    num += 1
+number = 0
+while number <= 89:
+    if number % 10 == 0 and number != 0:
+        number += 1 + number // 10
+    print("{:02d}".format(number), end=', ' if number != 89 else '\n')
+    number += 1
