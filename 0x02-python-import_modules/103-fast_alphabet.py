@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 import string
-print(*list(getattr(string.ascii_uppercase, "split")()), sep="")
+print(*string.ascii_uppercase, sep="")
