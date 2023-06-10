@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 def no_c(my_string):
-    """Removes all characters c and C from a string."""
-    new_str = ""    
+    """Removes all occurrences c and C from a string."""
+    new_str = ""
     for char in my_string:
-        if char.lower() != 'c':
+        if char != 'c' and char != 'C':
             new_str += char
     return (new_str)
