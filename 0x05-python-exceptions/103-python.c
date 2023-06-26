@@ -1,68 +1,47 @@
 #include <Python.h>
 
+void print_python_list(PyObject *p);
+void print_python_bytes(PyObject *p);
+void print_python_float(PyObject *p);
+
+/**
+ * print_python_list - Prints basic info about Python lists.
+ * @p: A PyObject list object.
+ */
 void print_python_list(PyObject *p)
 {
-	if (!PyList_Check(p))
-	{
-		printf("Invalid PyListObject\n");
-		return;
-	}
+	Py_ssize_t size, alloc, i;
+	const char *type;
+	PyListObject *list = (PyListObject *)p;
+	PyVarObject *var = (PyVarObject *)p;
 	
-	Py_ssize_t size = PyList_Size(p);
+	size = var->ob_size;
+	alloc = list->allocated;
+	
+	fflush(stdout);
 	
 	printf("[*] Python list info\n");
-	printf("[*] Size of the list = %ld\n", size);
-	printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
-	
-	for (Py_ssize_t i = 0; i < size; i++)
+	if (strcmp(p->ob_type->tp_name, "list") != 0)
 	{
-		PyObject *item = PyList_GetItem(p, i);
-		const char *itemType = Py_TYPE(item)->tp_name;
-		
-		printf("Element %ld: %s\n", i, itemType);
-	}
-}
-
-void print_python_bytes(PyObject *p)
-{
-	if (!PyBytes_Check(p))
-	{
-		printf("Invalid PyBytesObject\n");
+		printf("  [ERROR] Invalid List Object\n");
 		return;
 	}
 	
-	Py_ssize_t size = PyBytes_Size(p);
-	Py_ssize_t maxBytes = (size < 10) ? size : 10;
+	printf("[*] Size of the Python List = %ld\n", size);
+	printf("[*] Allocated = %ld\n", alloc);
 	
-	printf("[.] bytes object info\n");
-	printf("  size: %ld\n", size);
-	printf("  trying string: %s\n", PyBytes_AsString(p));
-	printf("  first %ld bytes: ", maxBytes);
-	
-	for (Py_ssize_t i = 0; i < maxBytes; i++)
+	for (i = 0; i < size; i++)
 	{
-		printf("%02x", (unsigned char)PyBytes_AsString(p)[i]);
-		
-		if (i != maxBytes - 1)
+		type = list->ob_item[i]->ob_type->tp_name;
+		printf("Element %ld: %s\n", i, type);
+		if (strcmp(type, "bytes") == 0)
 		{
-			printf(" ");
+			print_python_bytes(list->ob_item[i]);
+		}
+		else if (strcmp(type, "float") == 0)
+		{
+			print_python_float(list->ob_item[i]);
 		}
 	}
-	
-	printf("\n");
-}
-
-void print_python_float(PyObject *p)
-{
-	if (!PyFloat_Check(p))
-	{
-		printf("Invalid PyFloatObject\n");
-		return;
-	}
-	
-	double value = PyFloat_AsDouble(p);
-	
-	printf("[.] float object info\n");
-	printf("  value: %f\n", value);
 }
 
