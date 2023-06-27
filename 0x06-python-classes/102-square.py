@@ -34,18 +34,54 @@ class Square:
         self.__size = value
 
     def area(self):
-        return (self.__size ** 2)
+        """
+        Calculates the area of the square.
+
+        Returns:
+        int: The area of the square.
+        """
+        return (self.__size * self.__size)
 
     def __eq__(self, other):
+        """
+        Checks if two squares are equal.
+
+        Parameters:
+        other (Square): The other square to compare to.
+
+        Returns:
+        bool: True if the squares are equal, False otherwise.
+        """
         return self.area() == other.area()
 
     def __ne__(self, other):
+        """
+        Checks if two squares are not equal.
+
+        Parameters:
+        other (Square): The other square to compare to.
+
+        Returns:
+        bool: True if the squares are not equal, False otherwise.
+        """
         return (self.area() != other.area())
 
     def __gt__(self, other):
+         """
+        Checks if one square is greater than the other.
+
+        Parameters:
+        other (Square): The other square to compare to.
+
+        Returns:
+        bool:
         return (self.area() > other.area())
+        """
 
     def __ge__(self, other):
+        """
+        Define the >= compmarison to a Square.
+        """
         return (self.area() >= other.area())
 
     def __lt__(self, other):
