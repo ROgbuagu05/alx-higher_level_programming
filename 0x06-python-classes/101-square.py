@@ -29,7 +29,7 @@ class Square:
         self.__position = value
 
     def area(self):
-        return (self.size ** 2)
+        return (self.__size ** 2)
 
     def my_print(self):
         if self.__size == 0:
