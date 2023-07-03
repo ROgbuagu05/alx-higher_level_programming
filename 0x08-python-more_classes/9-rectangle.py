@@ -101,18 +101,16 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return ""
         rectangle_str = ""
-        for _ in range(self.height):
+        for y in range(self.height):
             rectangle_str += str(self.print_symbol) * self.width + "\n"
         return rectangle_str.rstrip()
 
     def __repr__(self):
         """
-        Returns a string representation of the rectangle
-
-        Returns:
-        str: The string representation of the rectangle
+        Returns a representation of the rectangle
         """
-        return f"Rectangle({self.width}, {self.height})"
+        return "{:s}({:d}, {:d})".format((type(self).__name__),
+                                        self.__width, self.__height)
 
     def __del__(self):
         """
@@ -124,35 +122,20 @@ class Rectangle:
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """
-        Compares two rectangles and returns the one with the bigger or equal area.
-
-        Parameters:
-        rect_1 (Rectangle): The first rectangle
-        rect_2 (Rectangle): The second rectangle
-
-        Raises:
-        TypeError: If either rect_1 or rect_2 is not an instance of Rectangle
-
-        Returns:
-        Rectangle: The rectangle with the bigger or equal area
+        Compares two rectangles and returns the larger rectangle.
         """
-        if not isinstance(rect_1, Rectangle):
+        if type(rect_1) != Rectangle:
             raise TypeError("rect_1 must be an instance of Rectangle")
-        if not isinstance(rect_2, Rectangle):
+        if type(rect_2) != Rectangle:
             raise TypeError("rect_2 must be an instance of Rectangle")
         if rect_1.area() >= rect_2.area():
             return rect_1
-        return rect_2
+        else:
+            return rect_2
 
     @classmethod
     def square(cls, size=0):
         """
-        Creates a new Rectangle instance with equal width and height.
-        
-        Parameters:
-        size (int): The size of the square (default is 0)
-
-        Returns:
-        Rectangle: A new Rectangle instance with equal width and height
+        Creates a new Rectangle instance.
         """
         return cls(size, size)
