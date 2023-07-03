@@ -90,7 +90,7 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return ""
         rectangle_str = ""
-        for _ in range(self.height):
+        for i in range(self.height):
             rectangle_str += str(self.print_symbol) * self.width + "\n"
         return rectangle_str.rstrip()
 
@@ -101,7 +101,7 @@ class Rectangle:
         Returns:
         str: The string representation of the rectangle
         """
-        return f"Rectangle({self.width}, {self.height})"
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __del__(self):
         """
