@@ -1,1 +1,1 @@
-Yes, a is a tuple.
+Yes
