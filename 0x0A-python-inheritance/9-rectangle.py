@@ -1,26 +1,23 @@
 #!/usr/bin/python3
-"""
-Defines a class Rectangle based on 8-base_geometry.py.
-"""
-
+"""Defines a class Rectangle"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+
 class Rectangle(BaseGeometry):
-    """
-    Class Rectangle that inherits from BaseGeometry (7-base_geometry.py).
-    """
+    """Represent a rectangle using BaseGeometry."""
+
     def __init__(self, width, height):
         """
-        Initializes a Rectangle object with the given width and height.
+        Initializes a new Rectangle.
 
         Paameters:
         width (int): The width of the rectangle.
         height (int): The height of the rectangle.
         """
+        super().integer_validator("width", width)
         self.__width = width
+        super().integer_validator("height", height)
         self.__height = height
-        self.integer_validator("width", self.__width)
-        self.integer_validator("height", self.__height)
 
     def area(self):
         """
