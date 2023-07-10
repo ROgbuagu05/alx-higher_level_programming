@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""Defines an object attribute lookup function."""
+
 def lookup(obj):
-  """Returns a list of available attributes and methods of an object."""
-  attributes = []
-  for key in dir(obj):
-    if not key.startswith("_"):
-      attributes.append(key)
-  return attributes
+    """
+    Returns the list of an object's available attributes.
+    """
+    return list(dir(obj))
