@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Module defining the Rectangle class"""
-
 Rectangle = __import__('9-rectangle').Rectangle
+
 
 class Square(Rectangle):
     """Square class that inherits from Rectangle"""
@@ -21,7 +21,7 @@ class Square(Rectangle):
         """
         Calculates the area of the square.
 
-        Retrns:
+        Returns:
         int: The area of the square
         """
         return self.__size ** 2
