@@ -1,16 +1,10 @@
 #!/usr/bin/python3
-"""
-Defines a class BaseGeometry based on 6-base_geometry.py
-"""
-class BaseGeometry:
-    """
-    This class represents a base geometry.
+"""Defines a class BaseGeometry"""
 
-    Methods:
-    area(): Raises an Exception with the message
-    "area() is not implemented"
-    integer_validator(name, value): Validates the value
-    """
+
+class BaseGeometry:
+    """This class represents a base geometry."""
+
     def area(self):
         """
         Raises an Exception with the message area() is not implemented.
