@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Module class for MyInt
-"""
+"""Module class for MyInt"""
 
 class MyInt(int):
     """
@@ -9,13 +7,9 @@ class MyInt(int):
     """
 
     def __eq__(self, other):
-        """
-        Overrides the == operator to return the inverted result.
-        """
+        """Overrides the == operator to return the inverted result."""
         return super().__ne__(other)
 
     def __ne__(self, other):
-        """
-        Overrides the != operator to return the inverted result.
-        """
+        """Overrides the != operator to return the inverted result."""
         return super().__eq__(other)
