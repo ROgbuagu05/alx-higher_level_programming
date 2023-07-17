@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for base of all bases"""
+"""Module for base model class"""
 import json
 import csv
 import os
