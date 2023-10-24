@@ -1,6 +1,6 @@
 #!/usr/bin/node
 /**
- * A script that writes a string to a file.
+ * Script that writes a string to a file
  */
 
 const process = require('process');
